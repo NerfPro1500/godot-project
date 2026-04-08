@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://buty3cwmaydyx" path="res://scripts/player.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://u20ejmcbpbit" path="res://sprites/player/character_idle.png" id="2_idle"]
+[ext_resource type="Texture2D" uid="uid://bl7tkf2c2u7s" path="res://sprites/player/character_crouch-idle.png" id="3_jej6c"]
 [ext_resource type="Texture2D" uid="uid://c085ji1jo2x5f" path="res://sprites/player/character_walk.png" id="3_walk"]
 [ext_resource type="Texture2D" uid="uid://ctjav4prbm8fs" path="res://sprites/player/character_run.png" id="4_run"]
 [ext_resource type="Texture2D" uid="uid://5f4cutgtj2h4" path="res://sprites/player/character_roll.png" id="5_roll"]
 [ext_resource type="Texture2D" uid="uid://cnlp0meh4407u" path="res://sprites/player/character_air-spin.png" id="7_air_spin"]
 [ext_resource type="Texture2D" uid="uid://b1rxvg5bc67sv" path="res://sprites/player/character_land.png" id="8_land"]
-[ext_resource type="Texture2D" uid="uid://dh2eu7pimmwyn" path="res://scenes/character_crouch-idle.png" id="9_crouch_idle"]
 [ext_resource type="Texture2D" uid="uid://dkmy7jobi52vx" path="res://sprites/player/character_crouch-walk.png" id="10_crouch_walk"]
 [ext_resource type="Texture2D" uid="uid://ctdvy5upj28o6" path="res://sprites/player/character_ledge-climb.png" id="11_ledge_climb"]
 [ext_resource type="Texture2D" uid="uid://y8o13p7s20eb" path="res://sprites/player/character_ledge-grab.png" id="12_ledge_grab"]
@@ -46,21 +46,25 @@ region = Rect2(288, 0, 48, 48)
 atlas = ExtResource("7_air_spin")
 region = Rect2(336, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="Atlas_crouch_idle_0"]
-atlas = ExtResource("9_crouch_idle")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="Atlas_crouch_idle_1"]
-atlas = ExtResource("9_crouch_idle")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
+atlas = ExtResource("3_jej6c")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="Atlas_crouch_idle_2"]
-atlas = ExtResource("9_crouch_idle")
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+atlas = ExtResource("3_jej6c")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="Atlas_crouch_idle_3"]
-atlas = ExtResource("9_crouch_idle")
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
+atlas = ExtResource("3_jej6c")
 region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
+atlas = ExtResource("3_jej6c")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
+atlas = ExtResource("3_jej6c")
+region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="Atlas_crouch_walk_0"]
 atlas = ExtResource("10_crouch_walk")
@@ -330,16 +334,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("Atlas_crouch_idle_0")
+"texture": SubResource("AtlasTexture_f1ej7")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_crouch_idle_1")
+"texture": SubResource("AtlasTexture_oprun")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_crouch_idle_2")
+"texture": SubResource("AtlasTexture_a8ls1")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_crouch_idle_3")
+"texture": SubResource("AtlasTexture_qfm1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fulsm")
 }],
 "loop": true,
 "name": &"crouch_idle",
@@ -585,9 +592,12 @@ script = ExtResource("1_script")
 position = Vector2(0, -16)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_main")
-animation = &"walk"
+animation = &"crouch_idle"
 autoplay = "idle"
+frame_progress = 0.1890962
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1214601368]
 position = Vector2(3, -7)
 shape = SubResource("CollShape")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1051484084]

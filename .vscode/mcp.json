@@ -1,0 +1,12 @@
+{
+	"servers": {
+		"godot-mcp-server": {
+			"type": "stdio",
+			"command": "node",
+			"args": [
+				"${workspaceFolder}/.vscode/start-godot-mcp.js"
+			]
+		}
+	},
+	"inputs": []
+}

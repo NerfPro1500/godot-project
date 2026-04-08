@@ -1,0 +1,18 @@
+{
+    "cSpell.words": [
+        "cooldown",
+        "Deymoon",
+        "elif",
+        "hitbox",
+        "hitboxes",
+        "monitorable",
+        "onready",
+        "pathfinding",
+        "Piskel",
+        "Platformer",
+        "randf",
+        "spritesheet",
+        "tscn"
+    ],
+    "godotTools.editorPath.godot4": "${env:GODOT4_EDITOR_PATH}"
+}
