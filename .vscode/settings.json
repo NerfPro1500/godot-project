@@ -14,5 +14,5 @@
         "spritesheet",
         "tscn"
     ],
-    "godotTools.editorPath.godot4": "${env:GODOT4_EDITOR_PATH}"
+    "godotTools.editorPath.godot4": "C:\\Users\\kende\\AppData\\Local\\godot\\Godot_v4.6.1-stable_win64.exe"
 }
