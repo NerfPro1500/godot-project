@@ -3,13 +3,13 @@ extends Node2D
 ## Minimum seconds between spawns.
 @export var spawn_time_min := 2.0
 ## Maximum seconds between spawns.
-@export var spawn_time_max := 5.0
+@export var spawn_time_max := 10.0
 ## Maximum number of enemies this generator can have alive at once.
-@export var max_enemies := 3
+@export var max_enemies := 10
 ## How close the player must be before the generator activates.
-@export var activation_radius := 300.0
+@export var activation_radius := 3.0
 
-var _enemy_scene : PackedScene = preload("res://scenes/enemy.tscn")
+var _enemy_scene : PackedScene = preload("res://scenes/b2.tscn")
 var _alive_enemies : Array[Node] = []
 var _active := false
 
