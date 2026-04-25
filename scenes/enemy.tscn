@@ -1,19 +1,8 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene format=3 uid="uid://dys3mnk46uun8"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://c4yifyhjqdm41" path="res://scripts/enemy.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://u20ejmcbpbit" path="res://sprites/player/character_idle.png" id="2_idle"]
 [ext_resource type="Texture2D" uid="uid://c085ji1jo2x5f" path="res://sprites/player/character_walk.png" id="3_walk"]
-
-[sub_resource type="Shader" id="Shader_invert"]
-code = "shader_type canvas_item;
-void fragment() {
-	vec4 tex = texture(TEXTURE, UV);
-	COLOR = vec4(1.0 - tex.r, 1.0 - tex.g, 1.0 - tex.b, tex.a);
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_invert"]
-shader = SubResource("Shader_invert")
 
 [sub_resource type="AtlasTexture" id="Atlas_idle_0"]
 atlas = ExtResource("2_idle")
@@ -115,25 +104,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="CollShape_enemy"]
 size = Vector2(16, 52)
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=1805946235 groups=["enemies"]]
 script = ExtResource("1_script")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_invert")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1896269635]
 position = Vector2(0, -16)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_enemy")
 animation = &"idle"
 autoplay = "walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1983844978]
 position = Vector2(3, -7)
 shape = SubResource("CollShape_enemy")
 
-[node name="RayLeft" type="RayCast2D" parent="."]
+[node name="RayLeft" type="RayCast2D" parent="." unique_id=1441369949]
 position = Vector2(-12, 0)
 target_position = Vector2(0, 20)
 
-[node name="RayRight" type="RayCast2D" parent="."]
+[node name="RayRight" type="RayCast2D" parent="." unique_id=1348946484]
 position = Vector2(18, 0)
 target_position = Vector2(0, 20)
