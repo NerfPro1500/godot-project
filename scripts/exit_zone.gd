@@ -24,10 +24,12 @@ func _go_to_next_level() -> void:
 		push_warning("ExitZone: Could not parse level number from '%s'" % current_file)
 		return
 
-	var next_num := result.get_string().to_int() + 1
+	var trailing := result.get_string()
+	var next_num := trailing.to_int() + 1
+	var current_prefix := current_file.substr(0, current_file.length() - trailing.length())
 	var dir := current_path.get_base_dir()
 
-	# Scan the scenes folder for any file ending with the next number.
+	# Scan the scenes folder for any file ending with the next number AND sharing the same prefix.
 	var da := DirAccess.open(dir)
 	if da == null:
 		push_warning("ExitZone: Cannot open directory '%s'" % dir)
@@ -44,8 +46,10 @@ func _go_to_next_level() -> void:
 				if m:
 					print('Evaluating ' + m.get_string())
 				if m and m.get_string().to_int() == next_num:
-					get_tree().change_scene_to_file(dir.path_join(fname))
-					return
+					var candidate_prefix := base.substr(0, base.length() - m.get_string().length())
+					if candidate_prefix == current_prefix:
+						get_tree().change_scene_to_file(dir.path_join(fname))
+						return
 		fname = da.get_next()
 
 	push_warning("ExitZone: No level found with number %d in '%s'" % [next_num, dir])
