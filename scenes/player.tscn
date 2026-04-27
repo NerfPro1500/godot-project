@@ -583,7 +583,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="CollShape"]
-size = Vector2(16, 52)
+size = Vector2(18, 58)
 
 [node name="Player" type="CharacterBody2D" unique_id=2032180907 groups=["player"]]
 script = ExtResource("1_script")
@@ -592,12 +592,11 @@ script = ExtResource("1_script")
 position = Vector2(0, -16)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_main")
-animation = &"crouch_idle"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.1890962
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1214601368]
-position = Vector2(3, -7)
+position = Vector2(-1, -13)
 shape = SubResource("CollShape")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1051484084]
