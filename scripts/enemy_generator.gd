@@ -1,7 +1,7 @@
 extends Node2D
 
 ## Minimum seconds between spawns.
-@export var spawn_time_min := 2.0
+@export var spawn_time_min := .1
 ## Maximum seconds between spawns.
 @export var spawn_time_max := 10.0
 ## Maximum number of enemies this generator can have alive at once.

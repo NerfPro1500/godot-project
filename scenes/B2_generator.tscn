@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dbcnuokikqhs5"]
 
 [ext_resource type="Script" uid="uid://dyhovcapepem8" path="res://scripts/enemy_generator.gd" id="1_y1ewk"]
+[ext_resource type="PackedScene" uid="uid://cys8uaj0hnnri" path="res://scenes/B2.tscn" id="2_p363o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_trigger"]
 radius = 300.0
@@ -20,3 +21,6 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea" unique_id=577546585]
 shape = SubResource("CircleShape2D_trigger")
+
+[node name="B2" parent="TriggerArea" unique_id=159674439 instance=ExtResource("2_p363o")]
+position = Vector2(-3, 10)

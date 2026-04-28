@@ -8,19 +8,24 @@ const ROLL_SPEED   := 300.0
 const ROLL_TIME    := 0.4
 const WALL_GRAV    := 120.0
 const WALL_MAX     := 50.0
+const MAX_HELTH    := 25
 
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
+
+@onready var helth : int = MAX_HELTH
 
 var face_dir      := 1.0
 var jumps         := 0
 var roll_timer    := 0.0
 var state         := "idle"
 var prev_on_floor := false
+var _restart_pending := false
 
 var ray_chest : RayCast2D
 var ray_head  : RayCast2D
 
 func _ready() -> void:
+	helth = MAX_HELTH
 	sprite.animation_finished.connect(_on_anim_done)
 
 	ray_chest = RayCast2D.new()
@@ -34,6 +39,11 @@ func _ready() -> void:
 	add_child(ray_head)
 
 func _physics_process(delta: float) -> void:
+	if helth <= 0 and not _restart_pending:
+		_restart_pending = true
+		call_deferred("_restart_level")
+		return
+
 	var on_floor := is_on_floor()
 	var h        := Input.get_axis("move_left", "move_right")
 	var running  := Input.is_action_pressed("roll")  # hold Shift = run
@@ -194,3 +204,10 @@ func _on_anim_done() -> void:
 			position.y -= 48
 			position.x += face_dir * 20
 			_go("idle")
+
+func _restart_level() -> void:
+	var current_path := get_tree().current_scene.scene_file_path
+	if current_path == "":
+		push_warning("Player: Could not restart level; current scene path is empty")
+		return
+	get_tree().change_scene_to_file(current_path)

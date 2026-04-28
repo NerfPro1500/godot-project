@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-const WALK_SPEED  := 80.0
-const CHASE_SPEED := 140.0
-const GRAVITY     := 980.0
-const DETECT_RANGE := 250.0
+const WALK_SPEED  := 50.0
+const CHASE_SPEED := 150.0
+const GRAVITY     := 930.0
+const DETECT_RANGE := 240.0
 
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var ray_left  : RayCast2D = $RayLeft
@@ -40,6 +40,11 @@ func _physics_process(delta: float) -> void:
 	var speed := CHASE_SPEED if chasing else WALK_SPEED
 	velocity.x = direction * speed
 
+	if chasing:
+		_set_animation("fight")
+	else:
+		_set_animation("walk")
+
 	move_and_slide()
 
 	# Patrol logic: reverse at walls/ledges when not chasing
@@ -57,3 +62,13 @@ func _physics_process(delta: float) -> void:
 
 func _update_facing() -> void:
 	sprite.flip_h = (direction < 0)
+
+func _set_animation(name: String) -> void:
+	if sprite.animation == name:
+		return
+	if sprite.sprite_frames.has_animation(name):
+		sprite.play(name)
+	else:
+		# fallback to walk if fight isn't available
+		if sprite.animation != "walk" and sprite.sprite_frames.has_animation("walk"):
+			sprite.play("walk")

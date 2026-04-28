@@ -116,9 +116,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="CollShape_enemy"]
-size = Vector2(16, 52)
+size = Vector2(22, 60)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=159674439 groups=["enemies"]]
+[node name="B1" type="CharacterBody2D" unique_id=159674439 groups=["enemies"]]
+collision_layer = 2
 script = ExtResource("1_script")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=964519294]
@@ -129,7 +130,7 @@ animation = &"walk"
 autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=817289984]
-position = Vector2(3, -7)
+position = Vector2(-1, -11)
 shape = SubResource("CollShape_enemy")
 
 [node name="RayLeft" type="RayCast2D" parent="." unique_id=1803307532]

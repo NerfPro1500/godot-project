@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dxf42whvucnpi"]
+
+[sub_resource type="RectangleShape2D" id="RectShape"]
+size = Vector2(24108, 506)
+
+[node name="WorldBorder" type="Area2D" unique_id=1688919638]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1386193581]
+position = Vector2(2741, 221)
+shape = SubResource("RectShape")

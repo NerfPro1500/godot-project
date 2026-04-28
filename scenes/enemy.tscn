@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dys3mnk46uun8"]
 
-[ext_resource type="Script" uid="uid://c4yifyhjqdm41" path="res://scripts/enemy.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://u20ejmcbpbit" path="res://sprites/player/character_idle.png" id="2_idle"]
 [ext_resource type="Texture2D" uid="uid://c085ji1jo2x5f" path="res://sprites/player/character_walk.png" id="3_walk"]
 
@@ -105,7 +104,6 @@ animations = [{
 size = Vector2(16, 52)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1805946235 groups=["enemies"]]
-script = ExtResource("1_script")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1896269635]
 position = Vector2(0, -16)
